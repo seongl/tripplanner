@@ -4,6 +4,8 @@ Trip planner is an app that allows users to create itineraries for day trips or 
 
 Time spent: **0** hours spent in total
 
+Wireframes: https://docs.google.com/presentation/d/127Jsz_ATz-ZbRIKj-Mw8kjvWxqmXV2RPjO48ELB1uPs/edit?usp=sharing
+
 ## User Stories
 
 The following **required** functionality is completed:
