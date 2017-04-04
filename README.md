@@ -11,7 +11,9 @@ Wireframes: https://docs.google.com/presentation/d/127Jsz_ATz-ZbRIKj-Mw8kjvWxqmX
 The following **required** functionality is completed:
 
 * [ ]   Design data model for users/itineraries/stops (2 day) (MY/SL)
+* [ ]   Create Java objects (MY)
 * [ ]   Set up Parse DB (SL)
+* [ ]   Set up Parse client (SL)
 * [ ]   Preliminary UI design/colors
 
 First time user registration: (1 day)
