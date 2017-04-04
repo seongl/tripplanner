@@ -10,40 +10,40 @@ Wireframes: https://docs.google.com/presentation/d/127Jsz_ATz-ZbRIKj-Mw8kjvWxqmX
 
 The following **required** functionality is completed:
 
-* [ ]   Design data model for users/itineraries/stops (2 day)
+* [ ]   Design data model for users/itineraries/stops (2 day) (MY/SL)
+* [ ]   Set up Parse DB (SL)
 * [ ]   Preliminary UI design/colors
 
 First time user registration: (1 day)
-* [ ]   User can sign in through Google account
-* [ ]   User can set preferences of activity types, transportation types, spending amount
+* [ ]   User can sign in through Google account (SL)
+* [ ]   User can set preferences of activity types, transportation types, spending amount (SL)
 
 Settings: (.5 day)
-* [ ]   User can go to a settings page and update above preferences
+* [ ]   User can go to a settings page and update above preferences (SL)
 
 List of Itineraries (maybe landing view for not-first time user) (3 days)
-* [ ]	User can view a list of itineraries sorted by user's set preferences
+* [ ]	User can view a list of itineraries sorted by user's set preferences (MY)
 * [ ]   User can sort list of itineraries based on location (nearby), highest rated, recommended, etc
-* [ ]	User can search for an itinerary based on location or title keyword
-* [ ]   User can filter down search based on other features (time requirement, activity requirements)
+* [ ]	User can search for an itinerary based on location or title keyword 
 
 Detail view of Itinerary (7 days)
-* [ ]   User can drill down into an itinerary in the list to view details
-* [ ]   Detail view of itinerary includes a title, description, key features/attributes, photo
-* [ ]   Detail view of itinerary includes a "timeline" view with specific places in chronological order
-* [ ]   Each place "block" in the timeline view should show name, description, and other features
-* [ ]   "Timeline" view includes blocks for travel time (map) between places
+* [ ]   User can drill down into an itinerary in the list to view details (MY)
+* [ ]   Detail view of itinerary includes a title, description, key features/attributes, photo (MY)
+* [ ]   Detail view of itinerary includes a "timeline" view with specific places in chronological order (MY)
+* [ ]   Each place "block" in the timeline view should show name, description, and other features (MY)
+* [ ]   "Timeline" view includes blocks for travel time (map) between places (MY)
 * [ ]   User can tap on travel block to open directions to next stop
 * [ ]   User can rate an itinerary out of 5 stars
 
 Create new Itinerary (7 days)
-* [ ]   User can click a create button from actionbar to go to "Create Itinerary" activity
-* [ ]   User can add a title, description, type, other features for the new itinerary
-* [ ]   User can search in a searchbar (in a search "block") a place name and see top results from google places API
-        -- fallback in case Google API fails, user inputs all details
-* [ ]   User can select a place result and add to itinerary
-* [ ]   Newly added place "block" becomes added to the itinerary and search block moves below to the bottom
-* [ ]   User can save new itinerary to parse db
-* [ ]   On save, user goes to itinerary detail view
+* [ ]   User can click a create button from FAB to go to "Create Itinerary" activity (MY)
+* [ ]   User can add a title, description, type, other features for the new itinerary (MY)
+* [ ]   User can search in a searchbar (in a search "block") a place name and see top results from google places API (SL)
+        -- fallback in case Google API fails, user inputs all details 
+* [ ]   User can select a place result and add to itinerary (SL)
+* [ ]   Newly added place "block" becomes added to the itinerary and search block moves below to the bottom (SL)
+* [ ]   User can save new itinerary to parse db (SL)
+* [ ]   On save, user goes to itinerary detail view (SL)
 
 Detail view of Stop (optional)
 
@@ -56,6 +56,7 @@ The following **optional** features are implemented:
 * [ ]   User can share a screenshot/image of the full itinerary with friends via share button
 * [ ]   User can drill down into each stop block from "timeline view" of Itinerary to see description
 * [ ]   User can rate a Stop out of 5 stars
+* [ ]   User can filter down search based on other features (time requirement, activity requirements)
 
 The following **bonus** features are implemented:
 
