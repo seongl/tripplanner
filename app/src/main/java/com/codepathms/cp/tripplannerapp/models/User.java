@@ -1,5 +1,7 @@
 package com.codepathms.cp.tripplannerapp.models;
 
+import org.parceler.Parcel;
+
 import java.util.ArrayList;
 
 /**
@@ -15,6 +17,7 @@ import java.util.ArrayList;
     VisitedItineraries (list)
 */
 
+@Parcel(analyze={User.class})
 public class User {
 
     long id;
@@ -23,6 +26,31 @@ public class User {
     String imageUrl;
     ArrayList<Itinerary> savedItineraries;
     ArrayList<Itinerary> visitedItineraries;
+
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setUserPreferences(String userPreferences) {
+        this.userPreferences = userPreferences;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public void setSavedItineraries(ArrayList<Itinerary> savedItineraries) {
+        this.savedItineraries = savedItineraries;
+    }
+
+    public void setVisitedItineraries(ArrayList<Itinerary> visitedItineraries) {
+        this.visitedItineraries = visitedItineraries;
+    }
 
     public long getId() {
         return id;

@@ -1,5 +1,7 @@
 package com.codepathms.cp.tripplannerapp.models;
 
+import org.parceler.Parcel;
+
 import java.util.ArrayList;
 
 /**
@@ -20,7 +22,7 @@ import java.util.ArrayList;
     Stops (list of Stops)
 
  */
-
+@Parcel(analyze={Itinerary.class})
 public class Itinerary {
 
     long id;
@@ -33,7 +35,46 @@ public class Itinerary {
     float distance;  //In miles
     String imageUrl;
     ArrayList<Stop> stops;
-    //User createdByUser; //is this needed?
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setTags(String tags) {
+        this.tags = tags;
+    }
+
+    public void setRating(int rating) {
+        this.rating = rating;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public void setTimeDuration(int timeDuration) {
+        this.timeDuration = timeDuration;
+    }
+
+    public void setDistance(float distance) {
+        this.distance = distance;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public void setStops(ArrayList<Stop> stops) {
+        this.stops = stops;
+    }
 
     public long getId() {
         return id;
