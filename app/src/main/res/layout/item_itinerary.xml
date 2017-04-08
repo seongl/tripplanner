@@ -8,6 +8,8 @@
         android:id="@+id/ivItineraryItemPhoto"
         android:layout_width="match_parent"
         android:layout_height="160dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
         app:srcCompat="@drawable/places_ic_clear" />
 
     <TextView

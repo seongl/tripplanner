@@ -74,12 +74,25 @@ public class ItineraryListFragment extends Fragment {
         itineraryList = new ArrayList<>();
         itineraryAdapter = new ItineraryArrayAdapter(getActivity(), itineraryList);
 
+        itineraryList.addAll(getItineraries());
+
+    }
+
+    public ArrayList<Itinerary> getItineraries() {
+        // TODO: Get Itineraries from Parse DB and return
+
         /* creating some mock data */
+        ArrayList<Itinerary> mockItineraries = new ArrayList<Itinerary>();
         Itinerary it1 = new Itinerary();
         it1.setTitle("Dinner and Dessert");
+        it1.setDescription("A nice evening in Los Gatos");
+        it1.setImageUrl("http://i.imgur.com/nLB5Nce.jpg");
         Itinerary it2 = new Itinerary();
         it2.setTitle("Biking and Picnic at the beach");
-        itineraryList.add(it1);
-        itineraryList.add(it2);
+        it2.setDescription("Great for active families");
+        mockItineraries.add(it1);
+        mockItineraries.add(it2);
+        return mockItineraries;
+
     }
 }

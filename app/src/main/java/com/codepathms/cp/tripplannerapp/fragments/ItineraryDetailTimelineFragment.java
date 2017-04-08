@@ -45,14 +45,27 @@ public class ItineraryDetailTimelineFragment extends Fragment {
         stopsAdapter = new StopArrayAdapter(getActivity(), stopsList);
         lvStops.setAdapter(stopsAdapter);
 
+        stopsList.addAll(getStops());
+
+
+        return v;
+    }
+
+    public ArrayList<Stop> getStops() {
+        //TODO: Get stops from Parse DB
+
+        ArrayList<Stop> stopsList = new ArrayList<>();
+
         /* some Stop mock data */
         Stop stop1 = new Stop();
         stop1.setTitle("Fancy Restaurant");
+        stop1.setLocation("11 College Ave, Los Gatos, CA 95030, USA");
         Stop stop2 = new Stop();
         stop2.setTitle("Ice Cream Shop");
+        stop2.setLocation("2948 College Ave, Berkeley, CA 94705, USA");
         stopsList.add(stop1);
         stopsList.add(stop2);
 
-        return v;
+        return stopsList;
     }
 }

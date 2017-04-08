@@ -7,8 +7,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.codepathms.cp.tripplannerapp.R;
 import com.codepathms.cp.tripplannerapp.models.Itinerary;
 
@@ -38,6 +40,18 @@ public class ItineraryArrayAdapter extends ArrayAdapter<Itinerary> {
         TextView tvItineraryTitle = (TextView) convertView.findViewById(R.id.tvItineraryItemTitle);
         tvItineraryTitle.setText(itinerary.getTitle());
 
+        ImageView ivItineraryItemPhoto = (ImageView) convertView.findViewById(R.id.ivItineraryItemPhoto);
+        if (itinerary.getImageUrl() == null) {
+            Glide.with(context)
+                    .load("http://i.imgur.com/XWi7KBJ.jpg") //just a default image
+                    .centerCrop()
+                    .into(ivItineraryItemPhoto);
+        } else {
+            Glide.with(context)
+                    .load(itinerary.getImageUrl()) //just a default image
+                    .centerCrop()
+                    .into(ivItineraryItemPhoto);
+        }
 
         return convertView;
     }

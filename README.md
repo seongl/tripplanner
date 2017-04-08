@@ -10,8 +10,8 @@ Wireframes: https://docs.google.com/presentation/d/127Jsz_ATz-ZbRIKj-Mw8kjvWxqmX
 
 The following **required** functionality is completed:
 
-* [ ]   Design data model for users/itineraries/stops (2 day) (MY/SL)
-* [ ]   Create Java objects (MY)
+* [x]   Design data model for users/itineraries/stops (2 day) (MY/SL)
+* [x]   Create Java objects (MY)
 * [ ]   Set up Parse DB (SL)
 * [ ]   Set up Parse client (SL)
 * [ ]   Preliminary UI design/colors
@@ -24,21 +24,22 @@ Settings: (.5 day)
 * [ ]   User can go to a settings page and update above preferences (SL)
 
 List of Itineraries (maybe landing view for not-first time user) (3 days)
-* [ ]	User can view a list of itineraries sorted by user's set preferences (MY)
+* [x]	User can view a list of itineraries (MY)
+* [ ]   List of itineraries is filtered by user's preferences (MY)
 * [ ]   User can sort list of itineraries based on location (nearby), highest rated, recommended, etc
 * [ ]	User can search for an itinerary based on location or title keyword 
 
 Detail view of Itinerary (7 days)
-* [ ]   User can drill down into an itinerary in the list to view details (MY)
-* [ ]   Detail view of itinerary includes a title, description, key features/attributes, photo (MY)
-* [ ]   Detail view of itinerary includes a "timeline" view with specific places in chronological order (MY)
+* [x]   User can drill down into an itinerary in the list to view details (MY)
+* [x]   Detail view of itinerary includes a title, description, key features/attributes, photo (MY)
+* [x]   Detail view of itinerary includes a "timeline" view with specific places in chronological order (MY)
 * [ ]   Each place "block" in the timeline view should show name, description, and other features (MY)
-* [ ]   "Timeline" view includes blocks for travel time (map) between places (MY)
-* [ ]   User can tap on travel block to open directions to next stop
+* [x]   "Timeline" view includes blocks for travel time (map) between places (MY)
+* [x]   User can tap on travel block to open directions to next stop (MY)
 * [ ]   User can rate an itinerary out of 5 stars
 
 Create new Itinerary (7 days)
-* [ ]   User can click a create button from FAB to go to "Create Itinerary" activity (MY)
+* [x]   User can click a create button from FAB to go to "Create Itinerary" activity (MY)
 * [ ]   User can add a title, description, type, other features for the new itinerary (MY)
 * [ ]   User can search in a searchbar (in a search "block") a place name and see top results from google places API (SL)
         -- fallback in case Google API fails, user inputs all details 

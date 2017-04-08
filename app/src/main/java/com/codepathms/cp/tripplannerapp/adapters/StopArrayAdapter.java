@@ -1,6 +1,8 @@
 package com.codepathms.cp.tripplannerapp.adapters;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -38,7 +40,23 @@ public class StopArrayAdapter extends ArrayAdapter<Stop> {
         TextView tvStopTitle = (TextView) convertView.findViewById(R.id.tvStopTitle);
         tvStopTitle.setText(stop.getTitle());
 
+        TextView tvNav = (TextView) convertView.findViewById(R.id.tvNavTitle);
+        tvNav.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openNav(stop.getLocation());
+            }
+        });
+
         return convertView;
     }
 
+
+    public void openNav(String addr){
+//        String uri = "http://maps.google.com/maps?f=d&hl=en&saddr="+latitude1+","+longitude1+"&daddr="+latitude2+","+longitude2;
+        String uri = "http://maps.google.com/maps?f=d&hl=en&daddr="+addr;
+        Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse(uri));
+        getContext().startActivity(Intent.createChooser(intent, "Select an application"));
+
+    }
 }
