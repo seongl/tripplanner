@@ -3,6 +3,7 @@ package com.codepathms.cp.tripplannerapp.fragments;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.codepathms.cp.tripplannerapp.R;
+import com.codepathms.cp.tripplannerapp.activities.CreateItineraryActivity;
 import com.codepathms.cp.tripplannerapp.activities.ItineraryDetailActivity;
 import com.codepathms.cp.tripplannerapp.adapters.ItineraryArrayAdapter;
 import com.codepathms.cp.tripplannerapp.models.Itinerary;
@@ -51,6 +53,16 @@ public class ItineraryListFragment extends Fragment {
             }
         });
 
+        FloatingActionButton fabCreate = (FloatingActionButton) v.findViewById(R.id.fabCreate);
+        fabCreate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getActivity().getApplicationContext(), CreateItineraryActivity.class);
+                startActivity(i);
+
+            }
+        });
+
         return v;
     }
 
@@ -62,12 +74,25 @@ public class ItineraryListFragment extends Fragment {
         itineraryList = new ArrayList<>();
         itineraryAdapter = new ItineraryArrayAdapter(getActivity(), itineraryList);
 
+        itineraryList.addAll(getItineraries());
+
+    }
+
+    public ArrayList<Itinerary> getItineraries() {
+        // TODO: Get Itineraries from Parse DB and return
+
         /* creating some mock data */
+        ArrayList<Itinerary> mockItineraries = new ArrayList<Itinerary>();
         Itinerary it1 = new Itinerary();
         it1.setTitle("Dinner and Dessert");
+        it1.setDescription("A nice evening in Los Gatos");
+        it1.setImageUrl("http://i.imgur.com/nLB5Nce.jpg");
         Itinerary it2 = new Itinerary();
         it2.setTitle("Biking and Picnic at the beach");
-        itineraryList.add(it1);
-        itineraryList.add(it2);
+        it2.setDescription("Great for active families");
+        mockItineraries.add(it1);
+        mockItineraries.add(it2);
+        return mockItineraries;
+
     }
 }
