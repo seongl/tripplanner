@@ -3,6 +3,7 @@ package com.codepathms.cp.tripplannerapp.fragments;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.codepathms.cp.tripplannerapp.R;
+import com.codepathms.cp.tripplannerapp.activities.CreateItineraryActivity;
 import com.codepathms.cp.tripplannerapp.activities.ItineraryDetailActivity;
 import com.codepathms.cp.tripplannerapp.adapters.ItineraryArrayAdapter;
 import com.codepathms.cp.tripplannerapp.models.Itinerary;
@@ -47,6 +49,16 @@ public class ItineraryListFragment extends Fragment {
                 Intent i = new Intent(getActivity().getApplicationContext(), ItineraryDetailActivity.class);
                 i.putExtra("itinerary", Parcels.wrap(selectedItinerary));
                 startActivityForResult(i, REQUEST_CODE);
+
+            }
+        });
+
+        FloatingActionButton fabCreate = (FloatingActionButton) v.findViewById(R.id.fabCreate);
+        fabCreate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getActivity().getApplicationContext(), CreateItineraryActivity.class);
+                startActivity(i);
 
             }
         });

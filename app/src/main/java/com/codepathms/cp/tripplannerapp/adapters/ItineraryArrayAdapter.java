@@ -35,7 +35,7 @@ public class ItineraryArrayAdapter extends ArrayAdapter<Itinerary> {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_itinerary, parent, false);
         }
 
-        TextView tvItineraryTitle = (TextView) convertView.findViewById(R.id.tvItineraryTitle);
+        TextView tvItineraryTitle = (TextView) convertView.findViewById(R.id.tvItineraryItemTitle);
         tvItineraryTitle.setText(itinerary.getTitle());
 
 

@@ -20,6 +20,9 @@
         <activity android:name=".activities.ItineraryDetailActivity" />
         <activity android:name=".activities.PreferencesActivity" />
         <activity android:name=".activities.CreateItineraryActivity"></activity>
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyBeSkdjiHmb2XcCAGr0ATg6-XCwSJvABkc"/>
     </application>
 
 </manifest>

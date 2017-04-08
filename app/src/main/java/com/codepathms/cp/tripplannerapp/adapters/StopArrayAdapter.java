@@ -14,8 +14,6 @@ import com.codepathms.cp.tripplannerapp.models.Stop;
 
 import java.util.List;
 
-import static com.codepathms.cp.tripplannerapp.R.id.tvItineraryTitle;
-
 /**
  * Created by melissa on 4/4/17.
  */
