@@ -17,7 +17,7 @@ The following **required** functionality is completed:
 * [ ]   Preliminary UI design/colors
 
 First time user registration: (1 day)
-* [ ]   User can sign in through Google account (SL)
+* [ ]   User can sign in through Google account (MY)
 * [ ]   User can set preferences of activity types, transportation types, spending amount (SL)
 
 Settings: (.5 day)
@@ -25,7 +25,7 @@ Settings: (.5 day)
 
 List of Itineraries (maybe landing view for not-first time user) (3 days)
 * [x]	User can view a list of itineraries (MY)
-* [ ]   List of itineraries is filtered by user's preferences (MY)
+* [ ]   List of itineraries is filtered by user's preferences (SL)
 * [ ]   User can sort list of itineraries based on location (nearby), highest rated, recommended, etc
 * [ ]	User can search for an itinerary based on location or title keyword 
 
@@ -41,12 +41,12 @@ Detail view of Itinerary (7 days)
 Create new Itinerary (7 days)
 * [x]   User can click a create button from FAB to go to "Create Itinerary" activity (MY)
 * [ ]   User can add a title, description, type, other features for the new itinerary (MY)
-* [ ]   User can search in a searchbar (in a search "block") a place name and see top results from google places API (SL)
+* [ ]   User can search in a searchbar (in a search "block") a place name and see top results from google places API (MY)
         -- fallback in case Google API fails, user inputs all details 
-* [ ]   User can select a place result and add to itinerary (SL)
-* [ ]   Newly added place "block" becomes added to the itinerary and search block moves below to the bottom (SL)
+* [ ]   User can select a place result and add to itinerary (MY)
+* [ ]   Newly added place "block" becomes added to the itinerary and search block moves below to the bottom (MY)
 * [ ]   User can save new itinerary to parse db (SL)
-* [ ]   On save, user goes to itinerary detail view (SL)
+* [x]   On save, user goes to itinerary detail view (MY)
 
 Detail view of Stop (optional)
 
