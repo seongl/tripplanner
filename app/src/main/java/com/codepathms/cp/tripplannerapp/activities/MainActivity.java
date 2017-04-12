@@ -1,5 +1,6 @@
 package com.codepathms.cp.tripplannerapp.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -11,6 +12,9 @@ import android.view.ViewGroup;
 import com.astuetz.PagerSlidingTabStrip;
 import com.codepathms.cp.tripplannerapp.R;
 import com.codepathms.cp.tripplannerapp.fragments.ItineraryListFragment;
+import com.codepathms.cp.tripplannerapp.models.Itinerary;
+
+import org.parceler.Parcels;
 
 public class MainActivity extends AppCompatActivity {
     private ItineraryListFragment itineraryListFragment;
@@ -78,4 +82,16 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode == RESULT_OK) {
+
+            Itinerary newItinerary = (Itinerary) Parcels.unwrap(data.getExtras().getParcelable("NEW_ITINERARY"));
+            if (itineraryListFragment != null) {
+                itineraryListFragment.newItineraryCreated(newItinerary);
+            }
+
+        }
+
+    }
 }

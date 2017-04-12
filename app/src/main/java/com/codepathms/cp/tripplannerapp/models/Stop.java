@@ -1,5 +1,11 @@
 package com.codepathms.cp.tripplannerapp.models;
 
+import com.codepathms.cp.tripplannerapp.database.MyDatabase;
+import com.raizlabs.android.dbflow.annotation.Column;
+import com.raizlabs.android.dbflow.annotation.PrimaryKey;
+import com.raizlabs.android.dbflow.annotation.Table;
+import com.raizlabs.android.dbflow.structure.BaseModel;
+
 import org.parceler.Parcel;
 
 /**
@@ -19,18 +25,42 @@ import org.parceler.Parcel;
     ImageUrl
  */
 @Parcel(analyze={Stop.class})
-public class Stop {
+@Table(database = MyDatabase.class)
+public class Stop extends BaseModel{
 
+    @Column
+    @PrimaryKey (autoincrement=true)
     long id;
+
+    @Column
     String title;
+
+    @Column
     String description;
+
+    @Column
     String tags;
+
+    @Column
     int rating; //1-5
+
+    @Column
     String location; //city name
+
+    @Column
     int pricePoint; //1-4 ($-$$$$)
+
+    @Column
     long prevStopId;
+
+    @Column
     long nextStopId;
+
+    @Column
     String imageUrl;
+
+    @Column
+    long itineraryId;
 
     public void setId(long id) {
         this.id = id;
@@ -72,6 +102,10 @@ public class Stop {
         this.imageUrl = imageUrl;
     }
 
+    public void setItineraryId(long itineraryId) {
+        this.itineraryId = itineraryId;
+    }
+
     public long getId() {
         return id;
     }
@@ -110,6 +144,10 @@ public class Stop {
 
     public String getImageUrl() {
         return imageUrl;
+    }
+
+    public long getItineraryId() {
+        return itineraryId;
     }
 
 }

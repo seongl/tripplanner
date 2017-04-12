@@ -1,5 +1,12 @@
 package com.codepathms.cp.tripplannerapp.models;
 
+import com.codepathms.cp.tripplannerapp.database.MyDatabase;
+import com.raizlabs.android.dbflow.annotation.Column;
+import com.raizlabs.android.dbflow.annotation.ColumnIgnore;
+import com.raizlabs.android.dbflow.annotation.PrimaryKey;
+import com.raizlabs.android.dbflow.annotation.Table;
+import com.raizlabs.android.dbflow.structure.BaseModel;
+
 import org.parceler.Parcel;
 
 import java.util.ArrayList;
@@ -23,17 +30,38 @@ import java.util.ArrayList;
 
  */
 @Parcel(analyze={Itinerary.class})
-public class Itinerary {
+@Table(database = MyDatabase.class)
+public class Itinerary extends BaseModel {
 
+    @Column
+    @PrimaryKey (autoincrement=true)
     long id;
+
+    @Column
     String title;
+
+    @Column
     String description;
+
+    @Column
     String tags;
+
+    @Column
     int rating; //1-5
+
+    @Column
     String location; //City name
+
+    @Column
     int timeDuration; //In hours
+
+    @Column
     float distance;  //In miles
+
+    @Column
     String imageUrl;
+
+    @ColumnIgnore
     ArrayList<Stop> stops;
 
     public void setId(long id) {
