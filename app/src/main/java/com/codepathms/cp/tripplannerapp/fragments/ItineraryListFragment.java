@@ -16,6 +16,7 @@ import com.codepathms.cp.tripplannerapp.activities.CreateItineraryActivity;
 import com.codepathms.cp.tripplannerapp.activities.ItineraryDetailActivity;
 import com.codepathms.cp.tripplannerapp.adapters.ItineraryArrayAdapter;
 import com.codepathms.cp.tripplannerapp.models.Itinerary;
+import com.raizlabs.android.dbflow.sql.language.SQLite;
 
 import org.parceler.Parcels;
 
@@ -58,12 +59,17 @@ public class ItineraryListFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getActivity().getApplicationContext(), CreateItineraryActivity.class);
-                startActivity(i);
+                startActivityForResult(i,10);
 
             }
         });
 
         return v;
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
     @Override
@@ -78,21 +84,35 @@ public class ItineraryListFragment extends Fragment {
 
     }
 
+    public void newItineraryCreated(Itinerary newItinerary) {
+        itineraryList.add(newItinerary);
+        itineraryAdapter.notifyDataSetChanged();
+    }
+
     public ArrayList<Itinerary> getItineraries() {
         // TODO: Get Itineraries from Parse DB and return
 
-        /* creating some mock data */
-        ArrayList<Itinerary> mockItineraries = new ArrayList<Itinerary>();
-        Itinerary it1 = new Itinerary();
-        it1.setTitle("Dinner and Dessert");
-        it1.setDescription("A nice evening in Los Gatos");
-        it1.setImageUrl("http://i.imgur.com/nLB5Nce.jpg");
-        Itinerary it2 = new Itinerary();
-        it2.setTitle("Biking and Picnic at the beach");
-        it2.setDescription("Great for active families");
-        mockItineraries.add(it1);
-        mockItineraries.add(it2);
-        return mockItineraries;
+        List<Itinerary> itineraryList = SQLite.select().from(Itinerary.class).queryList();
 
+        /* creating some mock data if DB is empty*/
+        if (itineraryList.size() == 0) {
+            ArrayList<Itinerary> mockItineraries = new ArrayList<Itinerary>();
+            Itinerary it1 = new Itinerary();
+            it1.setTitle("Dinner and Dessert");
+            it1.setDescription("A nice evening in Los Gatos");
+            it1.setImageUrl("http://i.imgur.com/nLB5Nce.jpg");
+            it1.save();
+
+            Itinerary it2 = new Itinerary();
+            it2.setTitle("Biking and Picnic at the beach");
+            it2.setDescription("Great for active families");
+            it2.save();
+
+            mockItineraries.add(it1);
+            mockItineraries.add(it2);
+            return mockItineraries;
+        }
+
+        return (ArrayList<Itinerary>)itineraryList;
     }
 }

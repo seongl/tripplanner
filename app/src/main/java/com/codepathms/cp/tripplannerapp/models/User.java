@@ -1,5 +1,11 @@
 package com.codepathms.cp.tripplannerapp.models;
 
+import com.codepathms.cp.tripplannerapp.database.MyDatabase;
+import com.raizlabs.android.dbflow.annotation.Column;
+import com.raizlabs.android.dbflow.annotation.PrimaryKey;
+import com.raizlabs.android.dbflow.annotation.Table;
+import com.raizlabs.android.dbflow.structure.BaseModel;
+
 import org.parceler.Parcel;
 
 import java.util.ArrayList;
@@ -18,13 +24,24 @@ import java.util.ArrayList;
 */
 
 @Parcel(analyze={User.class})
-public class User {
+@Table(database = MyDatabase.class)
+public class User extends BaseModel{
 
+    @Column
+    @PrimaryKey (autoincrement=true)
     long id;
+
+    @Column
     String username;
+
+    @Column
     String userPreferences;
+
+    @Column
     String imageUrl;
+
     ArrayList<Itinerary> savedItineraries;
+
     ArrayList<Itinerary> visitedItineraries;
 
 
@@ -70,6 +87,13 @@ public class User {
 
     public ArrayList<Itinerary> getSavedItineraries() {
         return savedItineraries;
+        /*
+        if (savedItineraries == null) {
+            List<Itinerary> itineraryList = new Select().from(Itinerary.class).where(Condition.column(Itinerary_Table.PERSONID).eq(getId())).queryList();
+            savedItineraries.addAll(itineraryList);
+        }
+        return savedItineraries;
+        */
     }
 
     public ArrayList<Itinerary> getVisitedItineraries() {
