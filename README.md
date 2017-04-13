@@ -14,11 +14,9 @@ The following **required** functionality is completed:
 * [x]   Create Java objects (MY)
 * [ ]   Set up Parse DB (SL)
 * [ ]   Set up Parse client (SL)
-* [ ]   Preliminary UI design/colors
 
 First time user registration: (1 day)
-* [ ]   User can sign in through Google account (MY)
-* [ ]   User can set preferences of activity types, transportation types, spending amount (SL)
+* [ ]   User can set preferences of activity types, transportation types, spending amount and save to User object (SL)
 
 Settings: (.5 day)
 * [ ]   User can go to a settings page and update above preferences (SL)
@@ -26,8 +24,6 @@ Settings: (.5 day)
 List of Itineraries (maybe landing view for not-first time user) (3 days)
 * [x]	User can view a list of itineraries (MY)
 * [ ]   List of itineraries is filtered by user's preferences (SL)
-* [ ]   User can sort list of itineraries based on location (nearby), highest rated, recommended, etc
-* [ ]	User can search for an itinerary based on location or title keyword 
 
 Detail view of Itinerary (7 days)
 * [x]   User can drill down into an itinerary in the list to view details (MY)
@@ -36,13 +32,11 @@ Detail view of Itinerary (7 days)
 * [ ]   Each place "block" in the timeline view should show name, description, and other features (MY)
 * [x]   "Timeline" view includes blocks for travel time (map) between places (MY)
 * [x]   User can tap on travel block to open directions to next stop (MY)
-* [ ]   User can rate an itinerary out of 5 stars
 
 Create new Itinerary (7 days)
 * [x]   User can click a create button from FAB to go to "Create Itinerary" activity (MY)
 * [ ]   User can add a title, description, type, other features for the new itinerary (MY)
-* [ ]   User can search in a searchbar (in a search "block") a place name and see top results from google places API (MY)
-        -- fallback in case Google API fails, user inputs all details 
+* [ ]   User can search in a google searchbar a place name and see results from google places API (MY)
 * [ ]   User can select a place result and add to itinerary (MY)
 * [ ]   Newly added place "block" becomes added to the itinerary and search block moves below to the bottom (MY)
 * [ ]   User can save new itinerary to parse db (SL)
@@ -52,6 +46,7 @@ Detail view of Stop (optional)
 
 The following **optional** features are implemented:
 
+* [ ]   User can sort list of itineraries based on location (nearby), highest rated, recommended, etc
 * [ ]   Layout of detail view -- each place will have proportional height to the estimated length of time to spend
 * [ ]   User can go to 'Explore', 'Favorites', and 'Visited' tabs for respective lists
 * [ ]   User can mark an itinerary as 'Saved' or 'Visited' from list view or detail view
@@ -60,6 +55,9 @@ The following **optional** features are implemented:
 * [ ]   User can drill down into each stop block from "timeline view" of Itinerary to see description
 * [ ]   User can rate a Stop out of 5 stars
 * [ ]   User can filter down search based on other features (time requirement, activity requirements)
+* [ ]   User can sign in through Google account (MY)
+* [ ]	User can search for an itinerary based on location or title keyword 
+* [ ]   User can rate an itinerary out of 5 stars
 
 The following **bonus** features are implemented:
 
