@@ -34,9 +34,13 @@ public class ItineraryDetailHeaderFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_itinerary_detail_header, container, false);
 
         TextView tvItineraryDetailTitle = (TextView) v.findViewById(R.id.tvItineraryDetailTitle);
+        TextView tvItineraryDetailDescription = (TextView) v.findViewById(R.id.tvItineraryDetailDescription);
+        TextView tvItineraryDetailFeatures = (TextView) v.findViewById(R.id.tvItineraryDetailFeatures);
 
         Itinerary i = (Itinerary) Parcels.unwrap(getArguments().getParcelable("itinerary"));
         tvItineraryDetailTitle.setText(i.getTitle());
+        tvItineraryDetailDescription.setText(i.getDescription());
+        tvItineraryDetailFeatures.setText(i.getTags());
 
         return v;
 

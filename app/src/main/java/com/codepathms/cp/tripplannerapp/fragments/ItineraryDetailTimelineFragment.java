@@ -12,10 +12,13 @@ import com.codepathms.cp.tripplannerapp.R;
 import com.codepathms.cp.tripplannerapp.adapters.StopArrayAdapter;
 import com.codepathms.cp.tripplannerapp.models.Itinerary;
 import com.codepathms.cp.tripplannerapp.models.Stop;
+import com.codepathms.cp.tripplannerapp.models.Stop_Table;
+import com.raizlabs.android.dbflow.sql.language.SQLite;
 
 import org.parceler.Parcels;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by melissa on 4/4/17.
@@ -54,18 +57,27 @@ public class ItineraryDetailTimelineFragment extends Fragment {
     public ArrayList<Stop> getStops() {
         //TODO: Get stops from Parse DB
 
-        ArrayList<Stop> stopsList = new ArrayList<>();
+        Itinerary parentItinerary = (Itinerary) Parcels.unwrap(getArguments().getParcelable("itinerary"));
+        List<Stop> stopList = SQLite.select().from(Stop.class).where(Stop_Table.itineraryId.eq(parentItinerary.getId())).queryList();
 
-        /* some Stop mock data */
-        Stop stop1 = new Stop();
-        stop1.setTitle("Fancy Restaurant");
-        stop1.setLocation("11 College Ave, Los Gatos, CA 95030, USA");
-        Stop stop2 = new Stop();
-        stop2.setTitle("Ice Cream Shop");
-        stop2.setLocation("2948 College Ave, Berkeley, CA 94705, USA");
-        stopsList.add(stop1);
-        stopsList.add(stop2);
+        //ArrayList<Stop> stopsList = new ArrayList<>();
 
-        return stopsList;
+        /*
+        if (stopList.size() == 0) {
+            //some Stop mock data
+            Stop stop1 = new Stop();
+            stop1.setTitle("Fancy Restaurant");
+            stop1.setLocation("11 College Ave, Los Gatos, CA 95030, USA");
+            Stop stop2 = new Stop();
+            stop2.setTitle("Ice Cream Shop");
+            stop2.setLocation("2948 College Ave, Berkeley, CA 94705, USA");
+            stopsList.add(stop1);
+            stopsList.add(stop2);
+            return stopsList;
+
+        }*/
+
+        return (ArrayList<Stop>) stopList;
+
     }
 }

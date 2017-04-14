@@ -13,6 +13,7 @@ import android.widget.ListView;
 
 import com.codepathms.cp.tripplannerapp.R;
 import com.codepathms.cp.tripplannerapp.activities.CreateItineraryActivity;
+import com.codepathms.cp.tripplannerapp.activities.CreateItineraryDetailActivity;
 import com.codepathms.cp.tripplannerapp.activities.ItineraryDetailActivity;
 import com.codepathms.cp.tripplannerapp.adapters.ItineraryArrayAdapter;
 import com.codepathms.cp.tripplannerapp.models.Itinerary;
@@ -87,6 +88,12 @@ public class ItineraryListFragment extends Fragment {
     public void newItineraryCreated(Itinerary newItinerary) {
         itineraryList.add(newItinerary);
         itineraryAdapter.notifyDataSetChanged();
+
+        //Itinerary record was created, now go to CreateDetail to add Stops
+        Intent i = new Intent(getActivity().getApplicationContext(), CreateItineraryDetailActivity.class);
+        i.putExtra("New_Itinerary", Parcels.wrap(newItinerary));
+        startActivityForResult(i,10);
+
     }
 
     public ArrayList<Itinerary> getItineraries() {

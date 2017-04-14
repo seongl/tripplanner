@@ -3,14 +3,14 @@
     package="com.codepathms.cp.tripplannerapp">
 
     <application
+        android:name=".MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        android:name=".MyApplication">
-        <activity android:name=".activities.LoginActivity">
+        android:theme="@style/AppTheme">
+        <activity android:name=".activities.PreferencesActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -19,11 +19,14 @@
         </activity>
         <activity android:name=".activities.MainActivity" />
         <activity android:name=".activities.ItineraryDetailActivity" />
-        <activity android:name=".activities.PreferencesActivity" />
-        <activity android:name=".activities.CreateItineraryActivity"></activity>
+        <activity android:name=".activities.LoginActivity" />
+        <activity android:name=".activities.CreateItineraryDetailActivity" />
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyBeSkdjiHmb2XcCAGr0ATg6-XCwSJvABkc"/>
+            android:value="AIzaSyBeSkdjiHmb2XcCAGr0ATg6-XCwSJvABkc" />
+
+        <activity android:name=".activities.CreateItineraryActivity"></activity>
     </application>
 
 </manifest>
