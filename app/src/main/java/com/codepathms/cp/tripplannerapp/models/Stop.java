@@ -62,6 +62,12 @@ public class Stop extends BaseModel{
     @Column
     long itineraryId;
 
+    @Column
+    String placeId;
+
+    @Column
+    int sequenceNumber;
+
     public void setId(long id) {
         this.id = id;
     }
@@ -104,6 +110,12 @@ public class Stop extends BaseModel{
 
     public void setItineraryId(long itineraryId) {
         this.itineraryId = itineraryId;
+    }
+    public void setPlaceId(String placeId) {
+        this.placeId = placeId;
+    }
+    public void setSequenceNumber(int sequenceNumber) {
+        this.sequenceNumber = sequenceNumber;
     }
 
     public long getId() {
@@ -148,6 +160,14 @@ public class Stop extends BaseModel{
 
     public long getItineraryId() {
         return itineraryId;
+    }
+
+    public String getPlaceId() {
+        return placeId;
+    }
+
+    public int getSequenceNumber() {
+        return sequenceNumber;
     }
 
 }

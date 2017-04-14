@@ -9,11 +9,14 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.codepathms.cp.tripplannerapp.R;
+import com.codepathms.cp.tripplannerapp.models.Itinerary;
 import com.codepathms.cp.tripplannerapp.models.Stop;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlaceSelectionListener;
 import com.google.android.gms.location.places.ui.SupportPlaceAutocompleteFragment;
+
+import org.parceler.Parcels;
 
 import static com.bumptech.glide.gifdecoder.GifHeaderParser.TAG;
 
@@ -23,11 +26,13 @@ import static com.bumptech.glide.gifdecoder.GifHeaderParser.TAG;
 
 public class ItineraryCreateTimelineFragment extends Fragment{
 
-    public static ItineraryCreateTimelineFragment newInstance() {
+    int sequence;
+
+    public static ItineraryCreateTimelineFragment newInstance(Itinerary itinerary) {
         ItineraryCreateTimelineFragment itineraryCreateTimelineFragment = new ItineraryCreateTimelineFragment();
-//        Bundle args = new Bundle();
-//        args.putParcelable("itinerary", Parcels.wrap(itinerary));
-//        itineraryCreateTimelineFragment.setArguments(args);
+        Bundle args = new Bundle();
+        args.putParcelable("itinerary", Parcels.wrap(itinerary));
+        itineraryCreateTimelineFragment.setArguments(args);
         return itineraryCreateTimelineFragment;
     }
 
@@ -36,7 +41,7 @@ public class ItineraryCreateTimelineFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_create_timeline, container, false);
 
-
+        sequence = 0;
         return v;
 
     }
@@ -73,9 +78,15 @@ public class ItineraryCreateTimelineFragment extends Fragment{
     }
 
     public Stop createNewStop(String placeId, String name, String location) {
+        Itinerary itinerary = (Itinerary) Parcels.unwrap(getArguments().getParcelable("itinerary"));
+
         Stop newStop = new Stop();
         newStop.setTitle(name);
         newStop.setLocation(location);
+        newStop.setPlaceId(placeId);
+        newStop.setItineraryId(itinerary.getId());
+        newStop.setSequenceNumber(sequence);
+        newStop.save();
         return newStop;
     }
 }
