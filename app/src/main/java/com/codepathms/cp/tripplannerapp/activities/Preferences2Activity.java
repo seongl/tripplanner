@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.codepathms.cp.tripplannerapp.R;
+import com.codepathms.cp.tripplannerapp.models.UserParse;
 import com.parse.LogInCallback;
 import com.parse.ParseAnonymousUtils;
 import com.parse.ParseException;
@@ -76,6 +77,20 @@ public class Preferences2Activity extends AppCompatActivity {
                 preferences.add(etCity.getText().toString());
 
                 System.out.println("AAA");
+
+                UserParse message = new UserParse();
+                message.setUserId(ParseUser.getCurrentUser().getObjectId());
+                message.saveInBackground(new SaveCallback() {
+                    @Override
+                    public void done(ParseException e) {
+                        if(e == null) {
+                            Toast.makeText(Preferences2Activity.this, "Successfully created message on Parse",
+                                    Toast.LENGTH_SHORT).show();
+                        } else {
+                            Log.e(TAG, "Failed to save message", e);
+                        }
+                    }
+                });
 
                 Intent preferenceIntent = new Intent(getApplicationContext(), MainActivity.class);
 
