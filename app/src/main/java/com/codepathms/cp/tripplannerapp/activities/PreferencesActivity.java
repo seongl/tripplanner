@@ -407,6 +407,7 @@ public class PreferencesActivity extends AppCompatActivity {
             for(int i=0; i < messages.size(); ++i) {
                 if(currentUser.equals(messages.get(i).getUsername())) {
                     currentUserParse = messages.get(i);
+                    preferences = (ArrayList<String>) currentUserParse.getUserPreferences();
                 }
             }
         } catch (ParseException e) {

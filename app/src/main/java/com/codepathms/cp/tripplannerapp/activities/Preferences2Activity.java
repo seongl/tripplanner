@@ -27,6 +27,7 @@ import static com.codepathms.cp.tripplannerapp.R.id.btnDrinks;
 import static com.codepathms.cp.tripplannerapp.R.id.btnMovies;
 import static com.codepathms.cp.tripplannerapp.R.id.btnMuseum;
 import static com.codepathms.cp.tripplannerapp.R.id.btnMusic;
+import static com.codepathms.cp.tripplannerapp.R.id.btnNext;
 
 public class Preferences2Activity extends AppCompatActivity {
     static final String TAG = Preferences2Activity.class.getSimpleName();
@@ -72,11 +73,17 @@ public class Preferences2Activity extends AppCompatActivity {
         Log.e("ABC", preferences.toString());
         etCity = (EditText) findViewById(R.id.etCity);
 
+        for(int i=0; i < preferences.size(); ++i) {
+            if(preferences.get(i).contains("City:")) {
+                etCity.setText(preferences.get(i));
+            }
+        }
+
         Button btnNext = (Button) findViewById(R.id.btnNext);
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                preferences.add(etCity.getText().toString());
+                preferences.add("City:" + etCity.getText().toString());
 
                 UserParse message = new UserParse();
                 message.setUsername("bbb");
