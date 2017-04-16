@@ -69,6 +69,7 @@ public class Preferences2Activity extends AppCompatActivity {
         login();
 
         preferences = (ArrayList<String>) getIntent().getSerializableExtra("preferences");
+        Log.e("ABC", preferences.toString());
         etCity = (EditText) findViewById(R.id.etCity);
 
         Button btnNext = (Button) findViewById(R.id.btnNext);
@@ -78,7 +79,7 @@ public class Preferences2Activity extends AppCompatActivity {
                 preferences.add(etCity.getText().toString());
 
                 UserParse message = new UserParse();
-                message.setUsername("abc");
+                message.setUsername("bbb");
                 message.setUserPreferences(preferences);
                 message.saveInBackground(new SaveCallback() {
                     @Override
@@ -102,6 +103,11 @@ public class Preferences2Activity extends AppCompatActivity {
         });
 
         btnWalk = (Button) findViewById(R.id.btnWalk);
+        if(preferences.contains("Walk")) {
+            btnWalk.setBackgroundColor(CLICKED_COLOR);
+            preferences.add("Walk");
+            btnWalkClicked = true;
+        }
         btnWalk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -111,15 +117,23 @@ public class Preferences2Activity extends AppCompatActivity {
                     if( index >= 0 ) {
                         preferences.remove(index);
                     }
+                    btnWalkClicked = false;
                 } else {
-                    btnWalk.setBackgroundColor(CLICKED_COLOR);
-                    preferences.add("Walk");
+                    if(!btnDriveClicked && !btnPublicClicked) {
+                        btnWalk.setBackgroundColor(CLICKED_COLOR);
+                        preferences.add("Walk");
+                        btnWalkClicked = true;
+                    }
                 }
-                btnWalkClicked = !btnWalkClicked;
             }
         });
 
         btnDrive = (Button) findViewById(R.id.btnDrive);
+        if(preferences.contains("Drive")) {
+            btnDrive.setBackgroundColor(CLICKED_COLOR);
+            preferences.add("Drive");
+            btnDriveClicked = true;
+        }
         btnDrive.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -129,15 +143,23 @@ public class Preferences2Activity extends AppCompatActivity {
                     if( index >= 0 ) {
                         preferences.remove(index);
                     }
+                    btnDriveClicked = false;
                 } else {
-                    btnDrive.setBackgroundColor(CLICKED_COLOR);
-                    preferences.add("Drive");
+                    if(!btnWalkClicked && !btnPublicClicked) {
+                        btnDrive.setBackgroundColor(CLICKED_COLOR);
+                        preferences.add("Drive");
+                        btnDriveClicked = true;
+                    }
                 }
-                btnDriveClicked = !btnDriveClicked;
             }
         });
 
         btnPublic = (Button) findViewById(R.id.btnPublic);
+        if(preferences.contains("Public")) {
+            btnPublic.setBackgroundColor(CLICKED_COLOR);
+            preferences.add("Public");
+            btnPublicClicked = true;
+        }
         btnPublic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -147,16 +169,24 @@ public class Preferences2Activity extends AppCompatActivity {
                     if( index >= 0 ) {
                         preferences.remove(index);
                     }
+                    btnPublicClicked = false;
                 } else {
-                    btnPublic.setBackgroundColor(CLICKED_COLOR);
-                    preferences.add("Public");
+                    if(!btnWalkClicked && !btnDriveClicked) {
+                        btnPublic.setBackgroundColor(CLICKED_COLOR);
+                        preferences.add("Public");
+                        btnPublicClicked = true;
+                    }
                 }
-                btnPublicClicked = !btnPublicClicked;
             }
         });
 
 
         btnDollarOne = (Button) findViewById(R.id.btnDollarOne);
+        if(preferences.contains("DollarOne")) {
+            btnDollarOne.setBackgroundColor(CLICKED_COLOR);
+            preferences.add("DollarOne");
+            btnDollarOneClicked = true;
+        }
         btnDollarOne.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -178,6 +208,11 @@ public class Preferences2Activity extends AppCompatActivity {
         });
 
         btnDollarTwo = (Button) findViewById(R.id.btnDollarTwo);
+        if(preferences.contains("DollarTwo")) {
+            btnDollarTwo.setBackgroundColor(CLICKED_COLOR);
+            preferences.add("DollarTwo");
+            btnDollarTwoClicked = true;
+        }
         btnDollarTwo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -199,6 +234,11 @@ public class Preferences2Activity extends AppCompatActivity {
         });
 
         btnDollarThree = (Button) findViewById(R.id.btnDollarThree);
+        if(preferences.contains("DollarThree")) {
+            btnDollarThree.setBackgroundColor(CLICKED_COLOR);
+            preferences.add("DollarThree");
+            btnDollarThreeClicked = true;
+        }
         btnDollarThree.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

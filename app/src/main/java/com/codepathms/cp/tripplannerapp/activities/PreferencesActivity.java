@@ -11,15 +11,20 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.codepathms.cp.tripplannerapp.R;
+import com.codepathms.cp.tripplannerapp.models.UserParse;
+import com.parse.FindCallback;
 import com.parse.LogInCallback;
 import com.parse.ParseAnonymousUtils;
 import com.parse.ParseException;
 import com.parse.ParseObject;
+import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.codepathms.cp.tripplannerapp.R.id.btnNext;
 
 public class PreferencesActivity extends AppCompatActivity {
     static final String TAG = PreferencesActivity.class.getSimpleName();
@@ -61,11 +66,20 @@ public class PreferencesActivity extends AppCompatActivity {
 
     private ArrayList<String> preferences = new ArrayList<>();
 
+    private String currentUser = "bbb";
+    private UserParse currentUserParse = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_preferences);
 
+        getPreferences();
+
+
+        if(currentUserParse != null) {
+            System.out.println("fef");
+        }
         Button btnNext = (Button) findViewById(R.id.btnNext);
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,6 +91,13 @@ public class PreferencesActivity extends AppCompatActivity {
         });
 
         btnOutdoor = (Button) findViewById(R.id.btnOutdoor);
+        if(currentUserParse != null &&
+                currentUserParse.getUserPreferences() != null &&
+                currentUserParse.getUserPreferences().contains("OUTDOOR")) {
+            btnOutdoor.setBackgroundColor(CLICKED_COLOR);
+            preferences.add("OUTDOOR");
+            btnOutdoorClicked = true;
+        }
         btnOutdoor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -94,7 +115,15 @@ public class PreferencesActivity extends AppCompatActivity {
             }
         });
 
+
         btnFood = (Button) findViewById(R.id.btnFood);
+        if(currentUserParse != null &&
+                currentUserParse.getUserPreferences() != null &&
+                currentUserParse.getUserPreferences().contains("FOOD")) {
+            btnFood.setBackgroundColor(CLICKED_COLOR);
+            preferences.add("FOOD");
+            btnFoodClicked = true;
+        }
         btnFood.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -113,6 +142,13 @@ public class PreferencesActivity extends AppCompatActivity {
         });
 
         btnTours = (Button) findViewById(R.id.btnTours);
+        if(currentUserParse != null &&
+                currentUserParse.getUserPreferences() != null &&
+                currentUserParse.getUserPreferences().contains("TOURS")) {
+            btnTours.setBackgroundColor(CLICKED_COLOR);
+            preferences.add("TOURS");
+            btnToursClicked = true;
+        }
         btnTours.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -131,6 +167,13 @@ public class PreferencesActivity extends AppCompatActivity {
         });
 
         btnDrinks = (Button) findViewById(R.id.btnDrinks);
+        if(currentUserParse != null &&
+                currentUserParse.getUserPreferences() != null &&
+                currentUserParse.getUserPreferences().contains("DRINKS")) {
+            btnDrinks.setBackgroundColor(CLICKED_COLOR);
+            preferences.add("DRINKS");
+            btnDrinksClicked = true;
+        }
         btnDrinks.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -149,6 +192,13 @@ public class PreferencesActivity extends AppCompatActivity {
         });
 
         btnSports = (Button) findViewById(R.id.btnSports);
+        if(currentUserParse != null &&
+                currentUserParse.getUserPreferences() != null &&
+                currentUserParse.getUserPreferences().contains("SPORTS")) {
+            btnSports.setBackgroundColor(CLICKED_COLOR);
+            preferences.add("SPORTS");
+            btnSportsClicked = true;
+        }
         btnSports.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -167,6 +217,13 @@ public class PreferencesActivity extends AppCompatActivity {
         });
 
         btnArts = (Button) findViewById(R.id.btnArts);
+        if(currentUserParse != null &&
+                currentUserParse.getUserPreferences() != null &&
+                currentUserParse.getUserPreferences().contains("ARTS")) {
+            btnArts.setBackgroundColor(CLICKED_COLOR);
+            preferences.add("ARTS");
+            btnArtsClicked = true;
+        }
         btnArts.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -185,6 +242,13 @@ public class PreferencesActivity extends AppCompatActivity {
         });
 
         btnClubs = (Button) findViewById(R.id.btnClubs);
+        if(currentUserParse != null &&
+                currentUserParse.getUserPreferences() != null &&
+                currentUserParse.getUserPreferences().contains("CLUBS")) {
+            btnClubs.setBackgroundColor(CLICKED_COLOR);
+            preferences.add("CLUBS");
+            btnClubsClicked = true;
+        }
         btnClubs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -203,6 +267,13 @@ public class PreferencesActivity extends AppCompatActivity {
         });
 
         btnShops = (Button) findViewById(R.id.btnShops);
+        if(currentUserParse != null &&
+                currentUserParse.getUserPreferences() != null &&
+                currentUserParse.getUserPreferences().contains("SHOPS")) {
+            btnShops.setBackgroundColor(CLICKED_COLOR);
+            preferences.add("SHOPS");
+            btnShopsClicked = true;
+        }
         btnShops.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -221,6 +292,13 @@ public class PreferencesActivity extends AppCompatActivity {
         });
 
         btnHike = (Button) findViewById(R.id.btnHike);
+        if(currentUserParse != null &&
+                currentUserParse.getUserPreferences() != null &&
+                currentUserParse.getUserPreferences().contains("HIKE")) {
+            btnHike.setBackgroundColor(CLICKED_COLOR);
+            preferences.add("HIKE");
+            btnHikeClicked = true;
+        }
         btnHike.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -239,6 +317,13 @@ public class PreferencesActivity extends AppCompatActivity {
         });
 
         btnMusic = (Button) findViewById(R.id.btnMusic);
+        if(currentUserParse != null &&
+                currentUserParse.getUserPreferences() != null &&
+                currentUserParse.getUserPreferences().contains("MUSIC")) {
+            btnMusic.setBackgroundColor(CLICKED_COLOR);
+            preferences.add("MUSIC");
+            btnMusicClicked = true;
+        }
         btnMusic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -257,6 +342,13 @@ public class PreferencesActivity extends AppCompatActivity {
         });
 
         btnMovies = (Button) findViewById(R.id.btnMovies);
+        if(currentUserParse != null &&
+                currentUserParse.getUserPreferences() != null &&
+                currentUserParse.getUserPreferences().contains("MOVIES")) {
+            btnMovies.setBackgroundColor(CLICKED_COLOR);
+            preferences.add("MOVIES");
+            btnMoviesClicked = true;
+        }
         btnMovies.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -275,6 +367,13 @@ public class PreferencesActivity extends AppCompatActivity {
         });
 
         btnMuseum = (Button) findViewById(R.id.btnMuseum);
+        if(currentUserParse != null &&
+                currentUserParse.getUserPreferences() != null &&
+                currentUserParse.getUserPreferences().contains("MUSEUM")) {
+            btnMuseum.setBackgroundColor(CLICKED_COLOR);
+            preferences.add("MUSEUM");
+            btnMuseumClicked = true;
+        }
         btnMuseum.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -292,4 +391,27 @@ public class PreferencesActivity extends AppCompatActivity {
             }
         });
     }
+
+    void getPreferences() {
+        // Construct query to execute
+        ParseQuery<UserParse> query = ParseQuery.getQuery(UserParse.class);
+
+        // get the latest 500 messages, order will show up newest to oldest of this group
+        query.orderByAscending("createdAt");
+
+        // Execute query to fetch all messages from Parse asynchronously
+        // This is equivalent to a SELECT query with SQL
+        List<UserParse> messages = null;
+        try {
+            messages = query.find();
+            for(int i=0; i < messages.size(); ++i) {
+                if(currentUser.equals(messages.get(i).getUsername())) {
+                    currentUserParse = messages.get(i);
+                }
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
