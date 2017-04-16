@@ -36,11 +36,18 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 
+    compile 'com.parse:parseinterceptors:0.0.2'
+    compile 'com.parse:parse-livequery-android:1.0.2'
+    compile 'com.parse:parse-android:1.14.1'
+
     compile "com.android.support:appcompat-v7:${supportLibVersion}"
     compile "com.android.support:design:${supportLibVersion}"
     annotationProcessor "com.github.Raizlabs.DBFlow:dbflow-processor:${dbflow_version}"
     compile "com.github.Raizlabs.DBFlow:dbflow-core:${dbflow_version}"
     compile "com.github.Raizlabs.DBFlow:dbflow:${dbflow_version}"
+    compile 'com.parse:parseinterceptors:0.0.2'
+    compile 'com.parse:parse-livequery-android:1.0.2'
+    compile 'com.parse:parse-android:1.14.1'
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.0-beta5'
     compile 'com.astuetz:pagerslidingtabstrip:1.0.1'

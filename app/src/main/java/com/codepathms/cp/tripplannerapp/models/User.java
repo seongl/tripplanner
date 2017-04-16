@@ -1,6 +1,8 @@
 package com.codepathms.cp.tripplannerapp.models;
 
 import com.codepathms.cp.tripplannerapp.database.MyDatabase;
+import com.parse.ParseClassName;
+import com.parse.ParseObject;
 import com.raizlabs.android.dbflow.annotation.Column;
 import com.raizlabs.android.dbflow.annotation.PrimaryKey;
 import com.raizlabs.android.dbflow.annotation.Table;
