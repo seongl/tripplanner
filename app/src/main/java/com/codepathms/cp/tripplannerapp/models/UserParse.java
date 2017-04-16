@@ -4,9 +4,10 @@ import com.parse.ParseClassName;
 import com.parse.ParseObject;
 import com.raizlabs.android.dbflow.annotation.Column;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.List;
 
-import static com.codepathms.cp.tripplannerapp.models.User_Table.userPreferences;
 
 /**
  * Created by seonglee on 4/15/17.
@@ -37,11 +38,11 @@ public class UserParse extends ParseObject {
         put(USER_NAME_KEY, username);
     }
 
-    public String getUserPreferences() {
-        return getString(USER_PREFERENCES_KEY);
+    public List<String> getUserPreferences() {
+        return getList(USER_PREFERENCES_KEY);
     }
 
-    public void setUserPreferences(String userPreferences) {
+    public void setUserPreferences(ArrayList<String> userPreferences) {
         put(USER_PREFERENCES_KEY, userPreferences);
     }
 

@@ -65,6 +65,9 @@ public class Preferences2Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_preferences2);
 
+        // User login
+        login();
+
         preferences = (ArrayList<String>) getIntent().getSerializableExtra("preferences");
         etCity = (EditText) findViewById(R.id.etCity);
 
@@ -72,14 +75,11 @@ public class Preferences2Activity extends AppCompatActivity {
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                System.out.println(etCity.getText().toString());
                 preferences.add(etCity.getText().toString());
 
-                System.out.println("AAA");
-
                 UserParse message = new UserParse();
-                message.setUserId(ParseUser.getCurrentUser().getObjectId());
+                message.setUsername("abc");
+                message.setUserPreferences(preferences);
                 message.saveInBackground(new SaveCallback() {
                     @Override
                     public void done(ParseException e) {
@@ -92,7 +92,7 @@ public class Preferences2Activity extends AppCompatActivity {
                     }
                 });
 
-                Intent preferenceIntent = new Intent(getApplicationContext(), MainActivity.class);
+                Intent preferenceIntent = new Intent(getApplicationContext(), PreferencesActivity.class);
 
                 System.out.println("BBB");
                 preferenceIntent.putExtra("preferences", preferences);
@@ -220,4 +220,26 @@ public class Preferences2Activity extends AppCompatActivity {
         });
 
     }
+
+    // Get the userId from the cached currentUser object
+    void startWithCurrentUser() {
+        System.out.println("KKK");
+//        setupMessagePosting();
+    }
+
+    // Create an anonymous user using ParseAnonymousUtils and set sUserId
+    void login() {
+        System.out.println("JJJ");
+        ParseAnonymousUtils.logIn(new LogInCallback() {
+            @Override
+            public void done(ParseUser user, ParseException e) {
+                if (e != null) {
+                    Log.e(TAG, "Anonymous login failed: ", e);
+                } else {
+                    startWithCurrentUser();
+                }
+            }
+        });
+    }
+
 }
