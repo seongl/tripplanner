@@ -22,6 +22,7 @@ import com.parse.SaveCallback;
 import java.util.ArrayList;
 import java.util.List;
 
+import static android.R.id.message;
 import static com.codepathms.cp.tripplannerapp.R.id.btnClubs;
 import static com.codepathms.cp.tripplannerapp.R.id.btnDrinks;
 import static com.codepathms.cp.tripplannerapp.R.id.btnMovies;
@@ -75,7 +76,8 @@ public class Preferences2Activity extends AppCompatActivity {
 
         for(int i=0; i < preferences.size(); ++i) {
             if(preferences.get(i).contains("City:")) {
-                etCity.setText(preferences.get(i));
+                String s = preferences.get(i);
+                etCity.setText(s.substring(s.indexOf(":")+1));
             }
         }
 
@@ -83,7 +85,15 @@ public class Preferences2Activity extends AppCompatActivity {
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                preferences.add("City:" + etCity.getText().toString());
+                if(!preferences.contains("City:" + etCity.getText().toString())) {
+                    for(int i=0; i < preferences.size(); ++i) {
+                        if(preferences.get(i).contains("City:")) {
+                            String s = preferences.get(i);
+                            preferences.remove(i);
+                        }
+                    }
+                    preferences.add("City:" + etCity.getText().toString());
+                }
 
                 UserParse message = new UserParse();
                 message.setUsername("bbb");
@@ -112,7 +122,6 @@ public class Preferences2Activity extends AppCompatActivity {
         btnWalk = (Button) findViewById(R.id.btnWalk);
         if(preferences.contains("Walk")) {
             btnWalk.setBackgroundColor(CLICKED_COLOR);
-            preferences.add("Walk");
             btnWalkClicked = true;
         }
         btnWalk.setOnClickListener(new View.OnClickListener() {
@@ -128,6 +137,8 @@ public class Preferences2Activity extends AppCompatActivity {
                 } else {
                     if(!btnDriveClicked && !btnPublicClicked) {
                         btnWalk.setBackgroundColor(CLICKED_COLOR);
+                        preferences.remove("Drive");
+                        preferences.remove("Public");
                         preferences.add("Walk");
                         btnWalkClicked = true;
                     }
@@ -138,7 +149,6 @@ public class Preferences2Activity extends AppCompatActivity {
         btnDrive = (Button) findViewById(R.id.btnDrive);
         if(preferences.contains("Drive")) {
             btnDrive.setBackgroundColor(CLICKED_COLOR);
-            preferences.add("Drive");
             btnDriveClicked = true;
         }
         btnDrive.setOnClickListener(new View.OnClickListener() {
@@ -154,6 +164,8 @@ public class Preferences2Activity extends AppCompatActivity {
                 } else {
                     if(!btnWalkClicked && !btnPublicClicked) {
                         btnDrive.setBackgroundColor(CLICKED_COLOR);
+                        preferences.remove("Walk");
+                        preferences.remove("Public");
                         preferences.add("Drive");
                         btnDriveClicked = true;
                     }
@@ -164,7 +176,6 @@ public class Preferences2Activity extends AppCompatActivity {
         btnPublic = (Button) findViewById(R.id.btnPublic);
         if(preferences.contains("Public")) {
             btnPublic.setBackgroundColor(CLICKED_COLOR);
-            preferences.add("Public");
             btnPublicClicked = true;
         }
         btnPublic.setOnClickListener(new View.OnClickListener() {
@@ -180,6 +191,8 @@ public class Preferences2Activity extends AppCompatActivity {
                 } else {
                     if(!btnWalkClicked && !btnDriveClicked) {
                         btnPublic.setBackgroundColor(CLICKED_COLOR);
+                        preferences.remove("Drive");
+                        preferences.remove("Walk");
                         preferences.add("Public");
                         btnPublicClicked = true;
                     }
@@ -191,7 +204,6 @@ public class Preferences2Activity extends AppCompatActivity {
         btnDollarOne = (Button) findViewById(R.id.btnDollarOne);
         if(preferences.contains("DollarOne")) {
             btnDollarOne.setBackgroundColor(CLICKED_COLOR);
-            preferences.add("DollarOne");
             btnDollarOneClicked = true;
         }
         btnDollarOne.setOnClickListener(new View.OnClickListener() {
@@ -207,6 +219,8 @@ public class Preferences2Activity extends AppCompatActivity {
                 } else {
                     if(!btnDollarTwoClicked && !btnDollarThreeClicked) {
                         btnDollarOne.setBackgroundColor(CLICKED_COLOR);
+                        preferences.remove("DollarTwo");
+                        preferences.remove("DollarThree");
                         preferences.add("DollarOne");
                         btnDollarOneClicked = true;
                     }
@@ -217,7 +231,6 @@ public class Preferences2Activity extends AppCompatActivity {
         btnDollarTwo = (Button) findViewById(R.id.btnDollarTwo);
         if(preferences.contains("DollarTwo")) {
             btnDollarTwo.setBackgroundColor(CLICKED_COLOR);
-            preferences.add("DollarTwo");
             btnDollarTwoClicked = true;
         }
         btnDollarTwo.setOnClickListener(new View.OnClickListener() {
@@ -233,6 +246,8 @@ public class Preferences2Activity extends AppCompatActivity {
                 } else {
                     if(!btnDollarOneClicked && !btnDollarThreeClicked) {
                         btnDollarTwo.setBackgroundColor(CLICKED_COLOR);
+                        preferences.remove("DollarOne");
+                        preferences.remove("DollarThree");
                         preferences.add("DollarTwo");
                         btnDollarTwoClicked = true;
                     }
@@ -243,7 +258,6 @@ public class Preferences2Activity extends AppCompatActivity {
         btnDollarThree = (Button) findViewById(R.id.btnDollarThree);
         if(preferences.contains("DollarThree")) {
             btnDollarThree.setBackgroundColor(CLICKED_COLOR);
-            preferences.add("DollarThree");
             btnDollarThreeClicked = true;
         }
         btnDollarThree.setOnClickListener(new View.OnClickListener() {
@@ -259,6 +273,8 @@ public class Preferences2Activity extends AppCompatActivity {
                 } else {
                     if(!btnDollarOneClicked && !btnDollarTwoClicked) {
                         btnDollarThree.setBackgroundColor(CLICKED_COLOR);
+                        preferences.remove("DollarTwo");
+                        preferences.remove("DollarOne");
                         preferences.add("DollarThree");
                         btnDollarThreeClicked = true;
                     }
@@ -270,13 +286,10 @@ public class Preferences2Activity extends AppCompatActivity {
 
     // Get the userId from the cached currentUser object
     void startWithCurrentUser() {
-        System.out.println("KKK");
-//        setupMessagePosting();
     }
 
     // Create an anonymous user using ParseAnonymousUtils and set sUserId
     void login() {
-        System.out.println("JJJ");
         ParseAnonymousUtils.logIn(new LogInCallback() {
             @Override
             public void done(ParseUser user, ParseException e) {

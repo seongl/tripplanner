@@ -95,7 +95,6 @@ public class PreferencesActivity extends AppCompatActivity {
                 currentUserParse.getUserPreferences() != null &&
                 currentUserParse.getUserPreferences().contains("OUTDOOR")) {
             btnOutdoor.setBackgroundColor(CLICKED_COLOR);
-            preferences.add("OUTDOOR");
             btnOutdoorClicked = true;
         }
         btnOutdoor.setOnClickListener(new View.OnClickListener() {
@@ -121,7 +120,6 @@ public class PreferencesActivity extends AppCompatActivity {
                 currentUserParse.getUserPreferences() != null &&
                 currentUserParse.getUserPreferences().contains("FOOD")) {
             btnFood.setBackgroundColor(CLICKED_COLOR);
-            preferences.add("FOOD");
             btnFoodClicked = true;
         }
         btnFood.setOnClickListener(new View.OnClickListener() {
@@ -146,7 +144,6 @@ public class PreferencesActivity extends AppCompatActivity {
                 currentUserParse.getUserPreferences() != null &&
                 currentUserParse.getUserPreferences().contains("TOURS")) {
             btnTours.setBackgroundColor(CLICKED_COLOR);
-            preferences.add("TOURS");
             btnToursClicked = true;
         }
         btnTours.setOnClickListener(new View.OnClickListener() {
@@ -171,7 +168,6 @@ public class PreferencesActivity extends AppCompatActivity {
                 currentUserParse.getUserPreferences() != null &&
                 currentUserParse.getUserPreferences().contains("DRINKS")) {
             btnDrinks.setBackgroundColor(CLICKED_COLOR);
-            preferences.add("DRINKS");
             btnDrinksClicked = true;
         }
         btnDrinks.setOnClickListener(new View.OnClickListener() {
@@ -196,7 +192,6 @@ public class PreferencesActivity extends AppCompatActivity {
                 currentUserParse.getUserPreferences() != null &&
                 currentUserParse.getUserPreferences().contains("SPORTS")) {
             btnSports.setBackgroundColor(CLICKED_COLOR);
-            preferences.add("SPORTS");
             btnSportsClicked = true;
         }
         btnSports.setOnClickListener(new View.OnClickListener() {
@@ -221,7 +216,6 @@ public class PreferencesActivity extends AppCompatActivity {
                 currentUserParse.getUserPreferences() != null &&
                 currentUserParse.getUserPreferences().contains("ARTS")) {
             btnArts.setBackgroundColor(CLICKED_COLOR);
-            preferences.add("ARTS");
             btnArtsClicked = true;
         }
         btnArts.setOnClickListener(new View.OnClickListener() {
@@ -246,7 +240,6 @@ public class PreferencesActivity extends AppCompatActivity {
                 currentUserParse.getUserPreferences() != null &&
                 currentUserParse.getUserPreferences().contains("CLUBS")) {
             btnClubs.setBackgroundColor(CLICKED_COLOR);
-            preferences.add("CLUBS");
             btnClubsClicked = true;
         }
         btnClubs.setOnClickListener(new View.OnClickListener() {
@@ -271,7 +264,6 @@ public class PreferencesActivity extends AppCompatActivity {
                 currentUserParse.getUserPreferences() != null &&
                 currentUserParse.getUserPreferences().contains("SHOPS")) {
             btnShops.setBackgroundColor(CLICKED_COLOR);
-            preferences.add("SHOPS");
             btnShopsClicked = true;
         }
         btnShops.setOnClickListener(new View.OnClickListener() {
@@ -296,7 +288,6 @@ public class PreferencesActivity extends AppCompatActivity {
                 currentUserParse.getUserPreferences() != null &&
                 currentUserParse.getUserPreferences().contains("HIKE")) {
             btnHike.setBackgroundColor(CLICKED_COLOR);
-            preferences.add("HIKE");
             btnHikeClicked = true;
         }
         btnHike.setOnClickListener(new View.OnClickListener() {
@@ -321,7 +312,6 @@ public class PreferencesActivity extends AppCompatActivity {
                 currentUserParse.getUserPreferences() != null &&
                 currentUserParse.getUserPreferences().contains("MUSIC")) {
             btnMusic.setBackgroundColor(CLICKED_COLOR);
-            preferences.add("MUSIC");
             btnMusicClicked = true;
         }
         btnMusic.setOnClickListener(new View.OnClickListener() {
@@ -346,7 +336,6 @@ public class PreferencesActivity extends AppCompatActivity {
                 currentUserParse.getUserPreferences() != null &&
                 currentUserParse.getUserPreferences().contains("MOVIES")) {
             btnMovies.setBackgroundColor(CLICKED_COLOR);
-            preferences.add("MOVIES");
             btnMoviesClicked = true;
         }
         btnMovies.setOnClickListener(new View.OnClickListener() {
@@ -371,7 +360,6 @@ public class PreferencesActivity extends AppCompatActivity {
                 currentUserParse.getUserPreferences() != null &&
                 currentUserParse.getUserPreferences().contains("MUSEUM")) {
             btnMuseum.setBackgroundColor(CLICKED_COLOR);
-            preferences.add("MUSEUM");
             btnMuseumClicked = true;
         }
         btnMuseum.setOnClickListener(new View.OnClickListener() {
